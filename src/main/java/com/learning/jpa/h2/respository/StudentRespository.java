@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface StudentRespository extends JpaStudentRepository,JpaRepository<Students,Integer> {
     @Override
-    public List<Students> findStudentsByLastname(String lastname);
+    public List<Students> findStudentsByLastName(String lastName);
 }
