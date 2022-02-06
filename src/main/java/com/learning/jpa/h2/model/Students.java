@@ -14,7 +14,7 @@ public class Students implements Serializable {
     private String firstName;
 
     @Column(name = "last_name")
-    private Integer lastName;
+    private String lastName;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "country_id")
@@ -36,11 +36,11 @@ public class Students implements Serializable {
         this.firstName = firstName;
     }
 
-    public Integer getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(Integer lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 

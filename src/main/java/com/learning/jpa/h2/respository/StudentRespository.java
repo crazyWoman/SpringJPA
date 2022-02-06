@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface StudentRespository extends JpaStudentRepository,JpaRepository<Students,Integer> {
-    @Override
+public interface StudentRespository extends JpaRepository<Students,Integer> {
+
     public List<Students> findStudentsByLastName(String lastName);
 }
