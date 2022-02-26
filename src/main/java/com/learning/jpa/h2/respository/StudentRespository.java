@@ -11,4 +11,16 @@ import java.util.Optional;
 public interface StudentRespository extends JpaRepository<Students,Integer> {
 
     public List<Students> findStudentsByLastName(String lastName);
+    
+    public List<Students> findFirst2StudentsByLastName(String lastName);
+    
+    public List<Students> findStudentsByLastNameAndFirstName(String lastName, String firstName);
+    
+    public List<Students> findStudentsByLastNameOrFirstName(String lastName, String firstName);
+    
+    public List<Students> findStudentsByCountriesCountryIdGreaterThan(int countryId);
+    
+    public List<Students> findStudentsByFirstNameLike(String filter);
+    
+    public List<Students> findStudentsByLastNameOrderByFirstNameDesc(String lastName);
 }

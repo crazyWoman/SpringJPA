@@ -17,10 +17,40 @@ public class StudentController {
 
     @GetMapping("/studentLastName/{lastName}")
     public List<Students> getEmployeeById(@PathVariable ("lastName") final String lastName){
-        return jpaStudentRepository.findStudentsByLastName(lastName);
+        //return jpaStudentRepository.findStudentsByLastName(lastName);
+    	return jpaStudentRepository.findFirst2StudentsByLastName(lastName);
     }
 
+    @GetMapping("/studentLastName/{lastName}/{firstName}")
+    public List<Students> getByLastNameAndFirstName(@PathVariable final String lastName,
+    									  @PathVariable final String firstName){
+        //return jpaStudentRepository.findStudentsByLastName(lastName);
+    	return jpaStudentRepository.findStudentsByLastNameAndFirstName(lastName, firstName);
+    }
 
+    @GetMapping("/studentLastNameOrFirstName/{lastName}/{firstName}")
+    public List<Students> getByLastNameOrFirstName(@PathVariable final String lastName,
+    									  @PathVariable final String firstName){
+        //return jpaStudentRepository.findStudentsByLastName(lastName);
+    	return jpaStudentRepository.findStudentsByLastNameOrFirstName(lastName, firstName);
+    }
 
-
+    @GetMapping("/studentsByCountriesCount/{count}")
+    public List<Students> getByLastNameOrFirstName(@PathVariable final int count){
+        //return jpaStudentRepository.findStudentsByLastName(lastName);
+    	return jpaStudentRepository.findStudentsByCountriesCountryIdGreaterThan(count);
+    }
+    
+    @GetMapping("/studentsFirstNameLike/{filter}")
+    public List<Students> getByFirstNameLike(@PathVariable final String filter){
+        //return jpaStudentRepository.findStudentsByLastName(lastName);
+    	return jpaStudentRepository.findStudentsByFirstNameLike(filter);
+    }
+    
+    @GetMapping("/studentsFindByLastNameOrderByFirstNameDesc/{lastName}")
+    public List<Students> getByLastNameOrderByFirstNameDesc(@PathVariable final String lastName){
+        //return jpaStudentRepository.findStudentsByLastName(lastName);
+    	return jpaStudentRepository.findStudentsByLastNameOrderByFirstNameDesc(lastName);
+    }
+    
 }
