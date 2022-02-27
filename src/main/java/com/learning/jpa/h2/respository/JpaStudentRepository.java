@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface JpaStudentRepository {
     List<Students> findByLastName(String lastName);
+
 }

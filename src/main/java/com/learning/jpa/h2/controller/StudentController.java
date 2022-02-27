@@ -1,6 +1,8 @@
 package com.learning.jpa.h2.controller;
 
 import com.learning.jpa.h2.model.Students;
+import com.learning.jpa.h2.respository.JpaCustomStudentRepository;
+import com.learning.jpa.h2.respository.JpaStudentNativetudentRepository;
 import com.learning.jpa.h2.respository.JpaStudentRepository;
 import com.learning.jpa.h2.respository.StudentRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,12 @@ import java.util.List;
 public class StudentController {
     @Autowired
     private StudentRespository jpaStudentRepository;
+
+    @Autowired
+    private JpaCustomStudentRepository jpaCustomStudentRepository;
+
+    @Autowired
+    private JpaStudentNativetudentRepository jpaStudentNativetudentRepository;
 
     @GetMapping("/studentLastName/{lastName}")
     public List<Students> getEmployeeById(@PathVariable ("lastName") final String lastName){
@@ -52,5 +60,36 @@ public class StudentController {
         //return jpaStudentRepository.findStudentsByLastName(lastName);
     	return jpaStudentRepository.findStudentsByLastNameOrderByFirstNameDesc(lastName);
     }
+
+    @GetMapping("/studentsFindByLastNameIgnoreCasec/{lastName}")
+    public List<Students> getStudentByLastname(@PathVariable final String lastName){
+        //return jpaStudentRepository.findStudentsByLastName(lastName);
+        return jpaStudentRepository.findStudentsByLastNameIgnoreCase(lastName);
+
+    }
+
+    @GetMapping("/studentsCustom/{lastName}/{letter}/{id}")
+    public List<Students> getStudentByLastname(
+            @PathVariable final String lastName,
+            @PathVariable final String letter,
+            @PathVariable final int id
+            ){
+        //return jpaStudentRepository.findStudentsByLastName(lastName);
+        return jpaCustomStudentRepository.findStudent(letter,lastName,id);
+
+    }
+
+    @GetMapping("/studentsNative/{lastName}/{letter}/{id}")
+    public List<Students> getStudentByLastnameByNativeQuery(
+            @PathVariable final String lastName,
+            @PathVariable final String letter,
+            @PathVariable final int id
+    ){
+
+        return jpaStudentNativetudentRepository.findStudent(lastName,letter,id);
+
+    }
+
+
     
 }

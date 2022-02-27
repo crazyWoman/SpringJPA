@@ -23,4 +23,5 @@ public interface StudentRespository extends JpaRepository<Students,Integer> {
     public List<Students> findStudentsByFirstNameLike(String filter);
     
     public List<Students> findStudentsByLastNameOrderByFirstNameDesc(String lastName);
+    public List<Students> findStudentsByLastNameIgnoreCase(String lastName);
 }
