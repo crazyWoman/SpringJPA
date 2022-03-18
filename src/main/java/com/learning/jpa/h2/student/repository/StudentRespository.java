@@ -1,4 +1,4 @@
-package com.learning.jpa.h2.respository;
+package com.learning.jpa.h2.student.repository;
 
 import com.learning.jpa.h2.model.Students;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,4 +23,7 @@ public interface StudentRespository extends JpaRepository<Students,Integer> {
     public List<Students> findStudentsByFirstNameLike(String filter);
     
     public List<Students> findStudentsByLastNameOrderByFirstNameDesc(String lastName);
+    
+    public List<Students> findStudentsByLastNameIgnoreCase(String lastName);
+
 }
