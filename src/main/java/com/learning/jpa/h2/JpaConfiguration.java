@@ -28,7 +28,7 @@ public class JpaConfiguration {
 	private String dialectPlatform;
 	
 	@Bean(name = "studentDataSource")
-	@ConfigurationProperties(prefix = "app.test")
+	@ConfigurationProperties(prefix = "app.test.datasource")
 	DataSource dataSource() {
 		return DataSourceBuilder.create().build();
 	}
@@ -38,7 +38,7 @@ public class JpaConfiguration {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		localContainerEntityManagerFactoryBean.setDataSource(dataSource());
-		localContainerEntityManagerFactoryBean.setPackagesToScan("com.learning.jpa.h2.student.repository");
+		localContainerEntityManagerFactoryBean.setPackagesToScan("com.learning.jpa.h2");
 		
 		HibernateJpaVendorAdapter hibernateJpaVenderAdapter = new HibernateJpaVendorAdapter();
 		

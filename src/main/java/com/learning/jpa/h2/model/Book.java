@@ -2,12 +2,14 @@ package com.learning.jpa.h2.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TBL_BOOKS")
 public class Book {
 
+	@Id
 	@Column(name = "id")
 	private int id;
 
